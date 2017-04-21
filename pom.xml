@@ -8,7 +8,13 @@
   <description>phoneBiShe</description>
   
   <dependencies>
-
+		<!-- shiro 权限管理 -->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-all</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

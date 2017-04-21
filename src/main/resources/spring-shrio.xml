@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+<!-- 1. 保证实现了Shiro内部lifecycle函数的bean执行  **  Shiro生命周期处理器  --> 
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
+	
+<!-- 2. 缓存管理 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"></bean>
+<!-- 3. 自定义realm 
+			授权 认证   真正执行的是继承了AuthorizingRealm的类UserRealm的doGetAuthenticationInfo方法（验证），doGetAuthorizationInfo方法（授权）
+	-->
+	<bean id="jdbcRealm" class="com.vic.university.shiro.MyRealm"></bean>
+	
+<!-- 4. 安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="jdbcRealm"></property>
+		<property name="cacheManager" ref="cacheManager"></property>
+	</bean>
+	
+<!-- 5. 过滤器 -->
+		<!-- 
+			这个链接是 action的 链接。但是不知道可以是页面的链接不
+		
+			/security/**=anon 不需要权限
+			/test/**=roles[role1] 需要role1角色权限
+			/users/**=anyRoles[admin,role1] 自定义的，anyRoles ,有admin角色或者role1角色  也可以访问
+			/**=authc      需要认证
+			
+		 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+
+		<property name="securityManager" ref="securityManager"></property>
+		<!-- 登陆界面  但是这里是调用action的，不是jsp 
+			
+			我经过思考之后，发觉最好 用action 来进入 jsp 页面, 过滤器好控制些
+			而且用户没有登陆的话，会跳到这个链接，进入登陆界面
+		-->
+		<property name="loginUrl" value="/security/loginView"></property>
+		<!-- 成功的时候 会跳转到 登陆之前的界面，所以这个成功登陆的界面没什么用 -->
+		<property name="successUrl" value="/successUrl"></property>
+		<!-- 用户访问未对其授权的资源时，所显示的连接 -->
+		<property name="unauthorizedUrl" value="/unauthorizedUrl"></property>
+		<property name="filters">
+			<map>
+				<entry key="anyRoles">
+					<bean class="com.vic.university.shiro.AnyRolesAuthorizationFilter" />
+				</entry>
+			</map>
+		</property>
+		<property name="filterChainDefinitions">
+			<value>
+				/security/**=anon
+				/test/**=roles[role1]
+				/users/**=anyRoles[admin,role1]
+				/user/**=roles[admin]
+				/**=authc
+			</value>
+		</property>
+	</bean>
+</beans>

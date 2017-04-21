@@ -14,6 +14,7 @@ import javax.persistence.Table;
 public class User implements Serializable{
 	private Integer userId;
 	private String userName;
+	private String password;
 	private Integer age;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -30,6 +31,12 @@ public class User implements Serializable{
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public Integer getAge() {
 		return age;
