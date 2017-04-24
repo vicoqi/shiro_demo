@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form id="getUserInfo" action="${pageContext.request.contextPath}/user/getUserInfoById" method="get">
+${pageContext.request.contextPath}
+<form id="getUserInfo" action="/phoneBiShe/user/getUserInfoById" method="get">
 	id:<input type="text" name = "userId"/>
 	<input type="submit" value="提交">
 </form>

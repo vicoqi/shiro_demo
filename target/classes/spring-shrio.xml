@@ -55,7 +55,6 @@
 				/test/**=roles[role1]
 				/users/**=anyRoles[admin,role1]
 				/user/**=roles[admin]
-				/**=authc
 			</value>
 		</property>
 	</bean>

@@ -22,8 +22,8 @@
 	
 	<!-- 2.内部资源视图解析器  -->
 	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/pages"/>
-		<property name="suffix" value=""/>
+		<property name="prefix" value="/pages/"/>
+		<property name="suffix" value=".jsp"/>
 	</bean>
 	
 	<mvc:resources mapping="/js/**" location="/js/" />

@@ -68,7 +68,7 @@ public class MyRealm extends AuthorizingRealm{
             // 登陆成功
             logger.info("{} login success.", username);
         }
-        
+        logger.info("**********************" +this.getName());
         return new SimpleAuthenticationInfo(paramAuthenticationToken, user.getPassword(), username);
 	}
 

@@ -37,7 +37,7 @@ public class ShiroSecurityAction {
 	@RequestMapping("/loginView")
 	public ModelAndView loginView(){
 		logger.info("下面进入登陆验证");
-		return new ModelAndView("/securityView/login.jsp");
+		return new ModelAndView("securityView/login");
 	}
 	
 	@RequestMapping("/loginData")
@@ -45,7 +45,7 @@ public class ShiroSecurityAction {
 	public Map<String, Object> login(HttpServletRequest request){
 		logger.info("进入登陆验证");
 		Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-		ShiroToken token = new ShiroToken("admin", "21232f297a57a5a743894a0e4a801fc3");
+		ShiroToken token = new ShiroToken("admin1", "21232f297a57a5a743894a0e4a801fc3");
 		token.setRememberMe(false);
 		SecurityUtils.getSubject().login(token);
 		ShiroToken token2 = (ShiroToken) SecurityUtils.getSubject().getPrincipal();
