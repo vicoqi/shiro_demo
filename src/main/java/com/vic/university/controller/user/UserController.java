@@ -13,7 +13,7 @@ import com.vic.university.service.user.IUserService;
 public class UserController {
 	@Resource
 	private IUserService userService;
-	@RequestMapping("/user/getUserInfoById")
+	@RequestMapping("/user/getUserInfoById.action")
 	public String getUserInfoById(Integer userId,Model model){
 //		System.out.println(request.getRemoteAddr());
 		System.out.println("asdf*---------------------*************************");
