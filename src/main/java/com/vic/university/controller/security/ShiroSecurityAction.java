@@ -34,13 +34,13 @@ public class ShiroSecurityAction {
 	
 	protected transient static Logger logger = LoggerFactory.getLogger(ShiroSecurityAction.class);
 	
-	@RequestMapping("/loginView")
+	@RequestMapping("/loginView.action")
 	public ModelAndView loginView(){
 		logger.info("下面进入登陆验证");
 		return new ModelAndView("securityView/login");
 	}
 	
-	@RequestMapping("/loginData")
+	@RequestMapping("/loginData.action")
 	@ResponseBody
 	public Map<String, Object> login(HttpServletRequest request){
 		logger.info("进入登陆验证");

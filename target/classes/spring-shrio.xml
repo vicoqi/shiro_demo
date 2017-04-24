@@ -37,7 +37,7 @@
 			我经过思考之后，发觉最好 用action 来进入 jsp 页面, 过滤器好控制些
 			而且用户没有登陆的话，会跳到这个链接，进入登陆界面
 		-->
-		<property name="loginUrl" value="/security/loginView"></property>
+		<property name="loginUrl" value="/security/loginView.action"></property>
 		<!-- 成功的时候 会跳转到 登陆之前的界面，所以这个成功登陆的界面没什么用 -->
 		<property name="successUrl" value="/successUrl"></property>
 		<!-- 用户访问未对其授权的资源时，所显示的连接 -->
