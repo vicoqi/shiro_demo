@@ -10,7 +10,7 @@ ssh
     
 ## 使用方法
 
-- 进入登录的action：http://localhost:8989/phoneBiShe/security/loginData.action   ----->登陆验证和授权 用户是admin1 , 权限是 admin
-- 测试：http://localhost:8989/phoneBiShe/user/getUserInfoById.action ----->访问成功
-- 但是如果先访问 ：http://localhost:8989/phoneBiShe/user/getUserInfoById.action   因为没有登陆，就会跳到 ：http://localhost:8989/phoneBiShe/security/loginView.action        登陆界面，因为没有权限
+- 进入登录的action：http://localhost:8989/phoneShe/security/loginData.action   ----->登陆验证和授权 用户是admin1 , 权限是 admin
+- 测试：http://localhost:8989/phoneShe/user/getUserInfoById.action ----->访问成功
+- 但是如果先访问 ：http://localhost:8989/phoneShe/user/getUserInfoById.action   因为没有登陆，就会跳到 ：http://localhost:8989/phoneShe/security/loginView.action        登陆界面，因为没有权限
 
