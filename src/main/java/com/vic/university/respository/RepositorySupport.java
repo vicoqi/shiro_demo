@@ -39,7 +39,7 @@ public class RepositorySupport<T> implements BaseRepository<T>{
 		domainClass = (Class<T>) ((ParameterizedType) getClass() // Class字节码
 				.getGenericSuperclass()) // 因为对于T.class我们无法获取，但是这个方法就能获取到父类的参数类型，返回值为ParameterizedType
 				.getActualTypeArguments()[0]; // 数组里第一个就是子类继承父类时所用类型
-		System.out.println(domainClass);
+//		System.out.println(domainClass);
 	}
 
 	@SuppressWarnings("unchecked")

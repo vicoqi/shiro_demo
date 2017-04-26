@@ -37,15 +37,18 @@ public class ShiroSecurityAction {
 	@RequestMapping("/loginView.action")
 	public ModelAndView loginView(){
 		logger.info("下面进入登陆验证");
-		return new ModelAndView("securityView/login");
+		return new ModelAndView("login");
 	}
 	
 	@RequestMapping("/loginData.action")
 	@ResponseBody
-	public Map<String, Object> login(HttpServletRequest request){
+	public ModelAndView login(HttpServletRequest request){
 		logger.info("进入登陆验证");
 		Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-		ShiroToken token = new ShiroToken("admin1", "21232f297a57a5a743894a0e4a801fc3");
+		String userName = request.getParameter("userName");
+		String password = request.getParameter("password");
+//		ShiroToken token = new ShiroToken("admin1", "21232f297a57a5a743894a0e4a801fc3");
+		ShiroToken token = new ShiroToken(userName, password);
 		token.setRememberMe(false);
 		SecurityUtils.getSubject().login(token);
 		ShiroToken token2 = (ShiroToken) SecurityUtils.getSubject().getPrincipal();
@@ -65,7 +68,10 @@ public class ShiroSecurityAction {
         }
         // 跳转地址
         resultMap.put("back_url", url);
-        
-		return resultMap;
+        logger.debug("登陆之前的URL："+url);
+        url = url.replaceAll(request.getContextPath(), "");
+        logger.debug(request.getContextPath()+"登陆之前的URL："+url);
+        return new ModelAndView("redirect:"+url);
+        		
 	}
 }

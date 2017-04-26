@@ -15,11 +15,17 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.vic.university.bean.User;
 import com.vic.university.controller.security.ShiroSecurityAction;
+import com.vic.university.service.user.IUserService;
 
 
 public class MyRealm extends AuthorizingRealm{
+	@Autowired
+	private IUserService userService;
+	
 	protected transient static Logger logger = LoggerFactory.getLogger(ShiroSecurityAction.class);
 	
 //授权
@@ -51,10 +57,12 @@ public class MyRealm extends AuthorizingRealm{
         // 根据username从数据库查找用户，得到密码
         // 假设找到的用户如下
         // User user = userService.findByUsername(username)
+        User user = userService.queryUserByUserName(username);
+        /*
         com.vic.university.bean.User user = new com.vic.university.bean.User();
         user.setUserName(username);
         user.setPassword("21232f297a57a5a743894a0e4a801fc3"); // 数据库中的密码md5加密的
-        
+        */
         if (null == user)
         {
             throw new AccountException("username is not exist");

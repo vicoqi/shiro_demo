@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form id="getUserInfo" action="${pageContext.request.contextPath}/user/getUserInfoById" method="get">
-	id:<input type="text" name = "userId"/>
+
+<form id="getUserInfo" action="${pageContext.request.contextPath}/security/loginData.action" method="get">
+	用户名:<input type="text" name = "userName"/><br/>
+	 密码 ：<input type="password" name="password"/><br/>
 	<input type="submit" value="提交">
 </form>
 </body>

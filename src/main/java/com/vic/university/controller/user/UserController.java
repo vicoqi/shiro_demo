@@ -41,4 +41,5 @@ public class UserController {
 		mv.addObject("hello", "nihao");
 		return mv;
 	}
+
 }

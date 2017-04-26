@@ -54,7 +54,7 @@
 	</filter-mapping>  
 	
 	<welcome-file-list>
-		<welcome-file>/pages/userInfo.jsp</welcome-file>
+		<welcome-file>/pages/lunbo.jsp</welcome-file>
 	</welcome-file-list>
   
 </web-app>

@@ -1,5 +1,7 @@
 package com.vic.university.service.user.impl;
 
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,14 @@ public class UserService implements IUserService{
 		userInfo.setUserName("lisan");
 		userInfo.setAge(20);
 		*/
+		return userInfo;
+	}
+
+	@Override
+	public User queryUserByUserName(String userName) {
+		DetachedCriteria queryCriteria = DetachedCriteria.forClass(User.class);
+		queryCriteria.add(Restrictions.eq("userName", userName));
+		User  userInfo = userDaoImpl.findOne(queryCriteria);
 		return userInfo;
 	}
 
