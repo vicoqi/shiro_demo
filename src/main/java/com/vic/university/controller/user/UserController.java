@@ -23,7 +23,7 @@ public class UserController {
 	protected transient static Logger logger = LoggerFactory.getLogger(UserController.class);
 	@Resource
 	private IUserService userService;
-	@RequestMapping("/user/getUserInfoById.action")
+	@RequestMapping("/user/getUserInfoById")
 	public ModelAndView getUserInfoById(HttpServletRequest request,Integer userId,Model model){
 		logger.debug("*************************---进入到 getUserInfoById");
 		User userInfo = userService.queryUserById(1);
