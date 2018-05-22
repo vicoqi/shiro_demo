@@ -1,5 +1,5 @@
 
-ssh
+shiro_demo
 ========================
 #### 以springmvc+hibernate+spring 为根本搭建起来的web项目架子。并后续添加各种功能。
 
